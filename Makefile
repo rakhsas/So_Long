@@ -1,6 +1,6 @@
-NAME = so_long.a
+NAME = so_long
 
-SRC = 	get_next_line.c
+SRC =	main.c get_next_line.c checker.c helper.c think.c
 GCC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
@@ -14,7 +14,7 @@ LIB = ar -rcs
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	@ $(LIB) $(NAME) $(OBJS)
+	$(LIB) $(NAME) $(OBJS)
 	cd ./libft && make
 	cd ./printf && make
 clean :

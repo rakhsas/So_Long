@@ -6,88 +6,90 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:22:00 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/01/07 15:34:01 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/01/07 21:43:21 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	checker_e(t_data *dt)
+int	checker_e(char *c)
 {
 	int	i;
 	int	counter;
 
 	i = 0;
 	counter = 0;
-	while (dt->ptr[i])
+	while (c[i])
 	{
-		if (dt->ptr[i] == 'E')
+		if (c[i] == 'E')
 			counter++;
 		i++;
 	}
-	return (i);
+	return (counter);
 }
 
-int	checker_p(t_data *dt)
+int	checker_p(char *c)
 {
 	int	i;
 	int	counter;
 
 	i = 0;
 	counter = 0;
-	while (dt->ptr[i])
+	while (c[i])
 	{
-		if (dt->ptr[i] == 'P')
+		if (c[i] == 'P')
 			counter++;
 		i++;
 	}
-	return (i);
+	return (counter);
 }
 
-int	checker_c(t_data *dt)
+int	checker_c(char *c)
 {
 	int	i;
 	int	counter;
 
 	i = 0;
 	counter = 0;
-	while (dt->ptr[i])
+	while (c[i])
 	{
-		if (dt->ptr[i] == 'C')
+		if (c[i] == 'C')
 			counter++;
 		i++;
 	}
-	return (i);
+	return (counter);
 }
 
-int	checker_0(t_data *dt)
+void	ft_check_i(t_data *dt)
 {
 	int	i;
-	int	counter;
 
 	i = 0;
-	counter = 0;
-	while (dt->ptr[i])
+	while (dt->tab[i])
 	{
-		if (dt->ptr[i] == '1')
-			counter++;
+		if (dt->tab[i][0] != '1')
+		{
+			ft_printf("\033[0;31mError\nThe Map");
+			ft_printf(" Border should not contain a");
+			ft_printf(" charater different to 1\033[0m");
+			exit(EXIT_FAILURE);
+		}
 		i++;
 	}
-	return (i);
 }
 
-int	checker_1(t_data *dt)
+void	ft_check_j(t_data *dt)
 {
-	int	i;
-	int	counter;
+	int	j;
 
-	i = 0;
-	counter = 0;
-	while (dt->ptr[i])
+	j = 0;
+	while (dt->tab[0][j])
 	{
-		if (dt->ptr[i] == '0')
-			counter++;
-		i++;
+		if (dt->tab[0][j] != '1')
+		{
+			ft_printf("\033[0;31mError\nThe Map Border should not contain a charater different to 1\033[0m");
+			exit(EXIT_FAILURE);
+		}
+		j++;
 	}
-	return (i);
 }
