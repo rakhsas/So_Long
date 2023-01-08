@@ -1,40 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   think.c                                            :+:      :+:    :+:   */
+/*   len.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 21:53:19 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/01/08 14:54:20 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/01/08 11:31:42 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/01/08 11:42:46 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	specified_len_of_collone(t_data *dt, int line)
+int	len_of_2tab_ligne(t_data *dt)
+{
+	int	i;
+
+	i = 0;
+	while (dt->map->tab[i])
+		i++;
+	return (i);
+}
+
+int	len_of_2tab_collone(t_data *dt)
 {
 	int	j;
+	int	i;
 
+	i = 0;
 	j = 0;
-	while (dt->map->tab[line][j])
+	while (dt->map->tab[i][j])
 		j++;
 	return (j);
 }
 
-void	check_length_of_lignes(t_data *dt)
+int	vert_len(t_data	*dt)
 {
 	int i = 0;
-
-	int x = len_of_2tab_collone(dt);
-	// printf("%d", x);
-	while (i < len_of_2tab_ligne(dt))
+	int j = 0;
+	while (i[dt->map->ptr])
 	{
-		if (x != specified_len_of_collone(dt, i))
-		{
-			ft_printf("\033[0;31mError\nThe Length of Map should be Identic\033[0m");
-			exit(EXIT_FAILURE);
-		}
+		if (i[dt->map->ptr] == '\n')
+			j++;
 		i++;
 	}
+	return (j);
 }

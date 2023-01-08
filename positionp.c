@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   think.c                                            :+:      :+:    :+:   */
+/*   positionp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 21:53:19 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/01/08 14:54:20 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/01/08 15:02:06 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/01/08 18:48:54 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	specified_len_of_collone(t_data *dt, int line)
-{
-	int	j;
-
-	j = 0;
-	while (dt->map->tab[line][j])
-		j++;
-	return (j);
-}
-
-void	check_length_of_lignes(t_data *dt)
+void ft_positon_player(t_data *dt)
 {
 	int i = 0;
-
-	int x = len_of_2tab_collone(dt);
-	// printf("%d", x);
-	while (i < len_of_2tab_ligne(dt))
+	int j = 0;
+	dt->p_pos_i = i;
+	dt->p_pos_j = j;
+	while(dt->map->tab[i])
 	{
-		if (x != specified_len_of_collone(dt, i))
+		while (dt->map->tab[i][j])
 		{
-			ft_printf("\033[0;31mError\nThe Length of Map should be Identic\033[0m");
-			exit(EXIT_FAILURE);
+			if (dt->map->tab[i][j] == 'P')
+			{
+				dt->p_pos_i = i;
+				dt->p_pos_j = j;
+			}
+			j++;
 		}
 		i++;
 	}
+
 }

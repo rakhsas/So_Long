@@ -6,72 +6,55 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:22:00 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/01/07 21:43:21 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/01/08 14:51:09 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	checker_e(char *c)
+int	checker_chars(t_data *dt, char c)
 {
 	int	i;
 	int	counter;
 
 	i = 0;
 	counter = 0;
-	while (c[i])
+	while (dt->map->ptr[i])
 	{
-		if (c[i] == 'E')
+		if (dt->map->ptr[i] == c)
 			counter++;
 		i++;
 	}
 	return (counter);
 }
 
-int	checker_p(char *c)
-{
-	int	i;
-	int	counter;
-
-	i = 0;
-	counter = 0;
-	while (c[i])
-	{
-		if (c[i] == 'P')
-			counter++;
-		i++;
-	}
-	return (counter);
-}
-
-int	checker_c(char *c)
-{
-	int	i;
-	int	counter;
-
-	i = 0;
-	counter = 0;
-	while (c[i])
-	{
-		if (c[i] == 'C')
-			counter++;
-		i++;
-	}
-	return (counter);
-}
 
 void	ft_check_i(t_data *dt)
 {
 	int	i;
 
 	i = 0;
-	while (dt->tab[i])
+	while (dt->map->tab[i])
 	{
-		if (dt->tab[i][0] != '1')
+		if (dt->map->tab[i][0] != '1')
 		{
-			ft_printf("\033[0;31mError\nThe Map");
-			ft_printf(" Border should not contain a");
-			ft_printf(" charater different to 1\033[0m");
+			ft_printf("\033[0;31mThe Map Border should not contain a charater different to 1\033[0m");
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
+	ft_check_ilen(dt);
+}
+void	ft_check_ilen(t_data *dt)
+{
+	int	i;
+
+	i = 0;
+	while (dt->map->tab[i])
+	{
+		if (dt->map->tab[i][dt->map->len_hori - 1] != '1')
+		{
+			ft_printf("\033[0;31mThe Map Border should not contain a charater different to 1\033[0m");
 			exit(EXIT_FAILURE);
 		}
 		i++;
@@ -83,13 +66,40 @@ void	ft_check_j(t_data *dt)
 	int	j;
 
 	j = 0;
-	while (dt->tab[0][j])
+	while (dt->map->tab[0][j])
 	{
-		if (dt->tab[0][j] != '1')
+		if (dt->map->tab[0][j] != '1')
 		{
-			ft_printf("\033[0;31mError\nThe Map Border should not contain a charater different to 1\033[0m");
+			ft_printf("\033[0;31mThe Map Border should not contain a charater different to 1\033[0m");
 			exit(EXIT_FAILURE);
 		}
 		j++;
 	}
+	ft_check_jlen(dt);
+}
+void	ft_check_jlen(t_data *dt)
+{
+	int	j;
+
+	j = 0;
+
+	while (dt->map->tab[dt->map->len_vert][j])
+	{
+		if (dt->map->tab[dt->map->len_vert][j] != '1')
+		{
+			ft_printf("\033[0;31mThe Map Border should not contain a charater different to 1\033[0m");
+			exit(EXIT_FAILURE);
+		}
+		j++;
+	}
+}
+
+
+void	borders_checker(t_data *dt)
+{
+	dt->map->len_hori = len_of_2tab_collone(dt);
+	ft_check_i(dt);
+	dt->map->len_vert = vert_len(dt);
+	ft_check_j(dt);
+	check_length_of_lignes(dt);
 }

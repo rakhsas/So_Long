@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 12:43:23 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/01/07 13:07:02 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/01/08 17:57:11 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,10 @@ char	*join_str(char const *s1, char const *s2)
 
 	if (!s1 && !s2)
 		return (NULL);
+	if (!s1)
+		return (strdup(s2));
+	if (!s2)
+		return (strdup(s1));
 	s1_len = ft_len((char *)s1);
 	s2_len = ft_len((char *)s2);
 	stot_len = s1_len + s2_len + 1;

@@ -6,70 +6,59 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 16:20:31 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/01/07 22:10:23 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/01/08 18:47:49 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_data	*opener(char *path)
+char *opener(t_data *dt, char *path)
 {
-	t_data	*dt;
 	int		fd;
+	char *str;
 
-	dt = malloc(sizeof(t_data));
-	if (!dt)
-		return (NULL);
 	fd = open(path, O_RDWR);
-	dt->ptr = NULL;
+	dt->map->ptr = NULL;
 	while (1)
 	{
-		dt->str = get_next_line(fd);
-		if (!dt->str)
+		dt->map->str = get_next_line(fd);
+		if (!dt->map->str)
 			break ;
-		dt->ptr = join_str(dt->ptr, dt->str);
+		str = join_str(str, dt->map->str);
 	}
-	return (dt);
+	return str;
 }
-
-int	len_of_2tab_ligne(t_data *dt)
+void	check_path(char **map, int i , int j ,t_data *dt)
 {
-	int	i;
-
-	i = 0;
-	while (dt->tab[i])
-		i++;
-	return (i);
-}
-
-int	len_of_2tab_collone(t_data *dt)
-{
-	int	j;
-	int	i;
-
-	i = 0;
-	j = 0;
-	while (dt->tab[i][j])
-		j++;
-	return (j);
-}
-
-void	borders_checker(t_data *dt)
-{
-	ft_check_i(dt);
-	ft_check_j(dt);
+//cas de base
+	if(i < 0 || j < 0 || map[i][j]  == '1')
+		return;
+	map[i][j] = '1';
+	check_path(dt->map->c_tab, i + 1 , j ,dt);
+	check_path(dt->map->c_tab, i - 1 , j  ,dt);
+	check_path(dt->map->c_tab, i , j + 1 ,dt);
+	check_path(dt->map->c_tab, i , j - 1 ,dt);
 }
 
 int	main(int ac, char **av)
 {
-	t_data	*dt;
+	t_data *dt;
 
 	if (ac == 2)
 	{
-		dt = opener(av[1]);
-		check_errno1(dt);
-		dt->tab = ft_split(dt->ptr, '\n');
+		dt = malloc(sizeof(t_data));
+		dt->map = malloc(sizeof(t_map));
+		dt->map->ptr = opener(dt, av[1]);
+
+		say_hello(dt);
+		dt->map->tab = ft_split(dt->map->ptr, '\n');
+		dt->map->c_tab = ft_split(dt->map->ptr, '\n');
+		dt->map->c2_tab =ft_split(dt->map->ptr, '\n');
 		borders_checker(dt);
-		check_length_of_lignes(dt);
+		ft_positon_player(dt);
+		printf("%d\t%d\n", dt->p_pos_i, dt->p_pos_j);
+		check_path(dt->map->c_tab, dt->p_pos_i, dt->p_pos_j, dt);
+		// ft_printf("%d", len_of_2tab_ligne(dt));
+
 	}
 }
