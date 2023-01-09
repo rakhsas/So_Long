@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 11:31:42 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/01/08 11:42:46 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/01/10 00:53:33 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,11 @@ int	len_of_2tab_collone(t_data *dt)
 
 int	vert_len(t_data	*dt)
 {
-	int i = 0;
-	int j = 0;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
 	while (i[dt->map->ptr])
 	{
 		if (i[dt->map->ptr] == '\n')

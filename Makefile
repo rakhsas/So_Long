@@ -6,7 +6,8 @@ SRC =	get_next_line.c checker.c helper.c think.c len.c positionp.c main.c
 
 GCC = gcc
 
-FLAG = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit -fsanitize=address
+FLAG = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
+# -fsanitize=address
 
 OBJS = $(SRC:.c=.o)
 

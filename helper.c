@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 13:54:49 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/01/09 20:36:50 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/01/10 00:55:25 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	check_newline(t_data *dt)
 	i = 0;
 	if (dt->map->ptr[0] == '\n')
 	{
-		ft_printf("\033[0;31mError\nThe Map should not begin with a New Line\033[0m");
+		ft_printf("\033[0;31mError\nThe Map ");
+		ft_printf("should not begin with a New Line\033[0m");
 		exit(EXIT_FAILURE);
 	}
 	while (dt->map->ptr[i])
@@ -42,7 +43,6 @@ void	check_newline(t_data *dt)
 	}
 }
 
-
 void	checker(t_data *dt)
 {
 	dt->count_c = checker_chars(dt, 'C');
@@ -50,12 +50,14 @@ void	checker(t_data *dt)
 	dt->count_e = checker_chars(dt, 'E');
 	if (dt->count_e > 1 || dt->count_e == 0)
 	{
-		ft_printf("\033[0;31mError\nThe Map should not contain more then One Exit and at least one\033[0m");
+		ft_printf("\033[0;31mError\nThe Map should not ");
+		ft_printf("contain more then One Exit and at least one\033[0m");
 		exit(EXIT_FAILURE);
 	}
 	else if (dt->count_p > 1 || dt->count_p == 0)
 	{
-		ft_printf("\033[0;31mError\nThe Map should not contain more then One Player and at least one\033[0m");
+		ft_printf("\033[0;31mError\nThe Map should not");
+		ft_printf(" contain more then One Player and at least one\033[0m");
 		exit(EXIT_FAILURE);
 	}
 	else if (dt->count_c == 0)
@@ -81,4 +83,9 @@ void say_hello(t_data *dt)
 	}
 	checker(dt);
 	check_newline(dt);
+	dt->map->tab = ft_split(dt->map->ptr, '\n');
+	dt->map->c_tab = ft_split(dt->map->ptr, '\n');
+	dt->map->c2_tab = ft_split(dt->map->ptr, '\n');
+	ft_positon_player(dt);
+	borders_checker(dt);
 }
