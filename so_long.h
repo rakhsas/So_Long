@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 12:52:39 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/01/09 15:12:15 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/01/09 20:32:50 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	check_length_of_lignes(t_data *dt);
 // Error function
 char	*error_line(int i);
 void ft_error(int	i);
+void	check_path2(char **map, int i , int j ,t_data *dt);
 void ft_positon_player(t_data *dt);
-
+int	checker_chars_c_tab(char **tab, char c);
 #endif

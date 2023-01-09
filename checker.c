@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:22:00 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/01/09 13:49:24 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/01/09 20:34:15 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,28 @@ int	checker_chars(t_data *dt, char c)
 	{
 		if (dt->map->ptr[i] == c)
 			counter++;
+		i++;
+	}
+	return (counter);
+}
+int	checker_chars_c_tab(char **tab, char c)
+{
+	int	i;
+	int	j;
+	int	counter;
+
+	i = 0;
+	j = 0;
+	counter = 0;
+	while (tab[i])
+	{
+		j = 0;
+		while (tab[i][j])
+		{
+			if (tab[i][j] == c)
+				counter++;
+			j++;
+		}
 		i++;
 	}
 	return (counter);
