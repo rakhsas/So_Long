@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 12:52:39 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/01/08 18:43:22 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/01/09 15:12:15 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ typedef struct s_data
 	void			*mlx_ptr;
 	int				p_pos_i;
 	int				p_pos_j;
+	int				count_c;
+	int				cp_count_c;
+	int				count_p;
+	int				count_e;
 	t_map			*map;
 }	t_data;
 

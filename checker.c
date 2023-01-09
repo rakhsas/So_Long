@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:22:00 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/01/08 14:51:09 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/01/09 13:49:24 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_check_i(t_data *dt)
 	{
 		if (dt->map->tab[i][0] != '1')
 		{
-			ft_printf("\033[0;31mThe Map Border should not contain a charater different to 1\033[0m");
+			ft_printf("\033[0;31mError\nThe Map Border should not contain a charater different to 1\033[0m");
 			exit(EXIT_FAILURE);
 		}
 		i++;
@@ -54,7 +54,7 @@ void	ft_check_ilen(t_data *dt)
 	{
 		if (dt->map->tab[i][dt->map->len_hori - 1] != '1')
 		{
-			ft_printf("\033[0;31mThe Map Border should not contain a charater different to 1\033[0m");
+			ft_printf("\033[0;31mError\nThe Map Border should not contain a charater different to 1\033[0m");
 			exit(EXIT_FAILURE);
 		}
 		i++;
@@ -70,7 +70,7 @@ void	ft_check_j(t_data *dt)
 	{
 		if (dt->map->tab[0][j] != '1')
 		{
-			ft_printf("\033[0;31mThe Map Border should not contain a charater different to 1\033[0m");
+			ft_printf("\033[0;31mError\nThe Map Border should not contain a charater different to 1\033[0m");
 			exit(EXIT_FAILURE);
 		}
 		j++;
@@ -87,7 +87,7 @@ void	ft_check_jlen(t_data *dt)
 	{
 		if (dt->map->tab[dt->map->len_vert][j] != '1')
 		{
-			ft_printf("\033[0;31mThe Map Border should not contain a charater different to 1\033[0m");
+			ft_printf("\033[0;31mError\nThe Map Border should not contain a charater different to 1\033[0m");
 			exit(EXIT_FAILURE);
 		}
 		j++;
