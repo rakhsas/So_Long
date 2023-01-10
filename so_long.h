@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 12:52:39 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/01/09 20:32:50 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/01/10 11:29:50 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <mlx.h>
+typedef struct s_img
+{
+	int				win_x;
+	int				win_y;
+	void			*img_ptr;
+	int				img_x;
+	int				img_y;
+}	t_img;
 typedef struct s_map
 {
 	char			*str;
@@ -33,8 +42,6 @@ typedef struct s_map
 }	t_map;
 typedef struct s_data
 {
-	int				win_x;
-	int				win_y;
 	void			*win_ptr;
 	void			*mlx_ptr;
 	int				p_pos_i;
@@ -44,6 +51,7 @@ typedef struct s_data
 	int				count_p;
 	int				count_e;
 	t_map			*map;
+	t_img			*img;
 }	t_data;
 
 #define BUFFER_SIZE 10
