@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 12:52:39 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/01/10 11:29:50 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/01/12 11:51:55 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_data
 	int				cp_count_c;
 	int				count_p;
 	int				count_e;
+	int				move;
 	t_map			*map;
 	t_img			*img;
 }	t_data;
